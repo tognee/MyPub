@@ -10,8 +10,12 @@ trim_trailing_whitespace = true
 
 [*.md]
 trim_trailing_whitespace = false
+indent_size = 2
 
-[*.{yml,yaml}]
+[*.{yml,yaml,json}]
+indent_size = 2
+
+[*.{html,css,js}]
 indent_size = 2
 
 [compose.yaml]
