@@ -2,10 +2,10 @@
 Test-bed to learn ActivityPub from documentation and implement a federated user.
 
 ## To-Do list
-- [ ] User model should have a username, a public_key and private_key field (plus Laravel defaults)
-- [ ] Make sure private_key is encrypted using Laravel encrypted casting
-- [ ] Use `openssl_pkey_new` to generate the key pair using the created Event
-- [ ] Create a seeder for the user to start testing
+- [X] User model should have a username, a public_key and private_key field (plus Laravel defaults)
+- [X] Make sure private_key is encrypted using Laravel encrypted casting
+- [X] Use `openssl_pkey_new` to generate the key pair using the created Event
+- [X] Create a seeder for the user to start testing
 - [ ] Create a stub ActorController
   - [ ] /u/{username} - Actor endpoint
   - [ ] /u/{username}/inbox - Inbox endpoint
