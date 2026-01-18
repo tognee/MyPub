@@ -6,25 +6,22 @@ Test-bed to learn ActivityPub from documentation and implement a federated user.
 - [X] Make sure private_key is encrypted using Laravel encrypted casting
 - [X] Use `openssl_pkey_new` to generate the key pair using the created Event
 - [X] Create a seeder for the user to start testing
-- [ ] Create a stub ActorController
-  - [ ] /u/{username} - Actor endpoint
-  - [ ] /u/{username}/inbox - Inbox endpoint
-  - [ ] /u/{username}/outbox - Outbox endpoint
-  - [ ] /u/{username}/followers - Followers endpoint
-  - [ ] /u/{username}/following - Following endpoint
-  - [ ] /u/{username}/liked - Liked endpoint
+- [X] Create a stub ActorController
+  - [X] /u/{username} - Actor endpoint
 - [ ] Create a /.well-known/webfinger enpoint that returns the user's ActivityPub profile URL
   - [ ] Create WebfingerController
   - [ ] Parse the query parameter 'resource'
   - [ ] Return standard JRD JSON linking to the Actor's endpoint
 - [ ] Implement the Actor endpoint
 - [ ] Implement a basic inbox endpoint
+  - [ ] /u/{username}/inbox - Inbox endpoint
   - [ ] Verify the signature of incoming requests
   - [ ] Log incoming activities
 - [ ] Parse the incoming activities
   - [ ] Use a JSON-LD parser (digitalbazaar/php-json-ld) to expand the json ld activity 
   - [ ] Map incoming activities to internal classes
 - [ ] Implement a basic outbox endpoint
+  - [ ] /u/{username}/outbox - Outbox endpoint
 - [ ] Handle follow activity
   - [ ] Recieve a follow activity
   - [ ] Add the follower to the followers list
