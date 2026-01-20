@@ -37,6 +37,11 @@ class User extends Authenticatable
         'private_key',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'username';
+    }
+
     /**
      * Get the attributes that should be cast.
      *
