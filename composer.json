@@ -1,13 +1,14 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "tognee/mypub",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "MyPub - Learning ActivityPub protocol using Laravel",
     "keywords": [
-        "laravel",
-        "framework"
+        "activitypub",
+        "federated",
+        "social-network"
     ],
-    "license": "MIT",
+    "license": "BSD-3-Clause",
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.0",
