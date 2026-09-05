@@ -12,14 +12,14 @@ use App\Context\ActivityStreams\Link;
  */
 trait HasNext
 {
-    protected function nextSchema(): array
+    protected function schemaHasNext(): array
     {
         return [
             'next' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#next',
                 'cast' => Cast::Node,
-                'range' => [CollectionPage::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [CollectionPage::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 

@@ -9,14 +9,14 @@ use App\ActivityPub\Cast;
  */
 trait HasUnits
 {
-    protected function unitsSchema(): array
+    protected function schemaHasUnits(): array
     {
         return [
             'units' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#units',
                 'cast' => Cast::String,
-                'range' => ["cm", "feet", "inches", "km", "m", "miles", "xsd:anyURI"]
-            ]
+                'range' => ['cm', 'feet', 'inches', 'km', 'm', 'miles', 'xsd:anyURI'],
+            ],
         ];
     }
 

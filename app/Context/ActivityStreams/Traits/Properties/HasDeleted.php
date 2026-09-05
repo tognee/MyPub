@@ -10,13 +10,13 @@ use Illuminate\Support\Carbon;
  */
 trait HasDeleted
 {
-    protected function deletedSchema(): array
+    protected function schemaHasDeleted(): array
     {
         return [
             'deleted' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#deleted',
                 'cast' => Cast::Date,
-            ]
+            ],
         ];
     }
 

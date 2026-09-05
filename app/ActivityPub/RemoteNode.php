@@ -9,8 +9,8 @@ class RemoteNode
     public function __construct(string $id)
     {
 
-        if (!filter_var($id, FILTER_VALIDATE_URL)) {
-            throw new \InvalidArgumentException("Remote ID must be a valid URL.");
+        if (! filter_var($id, FILTER_VALIDATE_URL)) {
+            throw new \InvalidArgumentException('Remote ID must be a valid URL.');
         }
         $this->id = $id;
     }

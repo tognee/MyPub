@@ -2,8 +2,9 @@
 
 namespace App\Context\ActivityStreams\Object;
 
-use App\Context\ActivityStreams\BaseObject;
-
-class Video extends BaseObject
+class Video extends Document
 {
+    /**
+     * Represents a video document of any kind.
+     */
 }

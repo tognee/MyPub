@@ -12,14 +12,14 @@ use App\Context\ActivityStreams\Link;
  */
 trait HasPreview
 {
-    protected function previewSchema(): array
+    protected function schemaHasPreview(): array
     {
         return [
             'preview' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#preview',
                 'cast' => Cast::Node,
-                'range' => [BaseObject::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [BaseObject::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 

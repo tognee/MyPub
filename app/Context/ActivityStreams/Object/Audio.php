@@ -2,8 +2,9 @@
 
 namespace App\Context\ActivityStreams\Object;
 
-use App\Context\ActivityStreams\BaseObject;
-
-class Audio extends BaseObject
+class Audio extends Document
 {
+    /**
+     * Represents an audio document of any kind.
+     */
 }

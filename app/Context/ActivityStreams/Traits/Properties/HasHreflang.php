@@ -9,14 +9,14 @@ use App\ActivityPub\Cast;
  */
 trait HasHreflang
 {
-    protected function hreflangSchema(): array
+    protected function schemaHasHreflang(): array
     {
         return [
             'hreflang' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#hreflang',
                 'cast' => Cast::String,
-                'range' => ['[BCP47] Language Tag']
-            ]
+                'range' => ['[BCP47] Language Tag'],
+            ],
         ];
     }
 

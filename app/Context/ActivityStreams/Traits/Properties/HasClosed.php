@@ -3,25 +3,24 @@
 namespace App\Context\ActivityStreams\Traits\Properties;
 
 use App\ActivityPub\Cast;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
+use App\ActivityPub\RemoteNode;
 use App\Context\ActivityStreams\BaseObject;
 use App\Context\ActivityStreams\Link;
-use App\ActivityPub\RemoteNode;
+use Illuminate\Support\Carbon;
 
 /**
  * @property-read bool|string|\DateTimeInterface|BaseObject|Link|RemoteNode|null $closed
  */
 trait HasClosed
 {
-    protected function closedSchema(): array
+    protected function schemaHasClosed(): array
     {
         return [
             'closed' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#closed',
                 'cast' => Cast::Node,
-                'range' => [BaseObject::class, Link::class, RemoteNode::class, 'xsd:dateTime', 'xsd:boolean']
-            ]
+                'range' => [BaseObject::class, Link::class, RemoteNode::class, 'xsd:dateTime', 'xsd:boolean'],
+            ],
         ];
     }
 
@@ -58,8 +57,8 @@ trait HasClosed
                    $value instanceof RemoteNode;
 
         // Validate the value type
-        if (!$isValid) {
-            throw new \InvalidArgumentException("Closed value must be a boolean, datetime string, or Object/Link");
+        if (! $isValid) {
+            throw new \InvalidArgumentException('Closed value must be a boolean, datetime string, or Object/Link');
         }
 
         return $this->set('https://www.w3.org/ns/activitystreams#closed', $value);

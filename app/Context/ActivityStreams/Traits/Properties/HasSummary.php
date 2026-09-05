@@ -10,13 +10,13 @@ use App\ActivityPub\TranslatableString;
  */
 trait HasSummary
 {
-    protected function summarySchema(): array
+    protected function schemaHasSummary(): array
     {
         return [
             'summary' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#summary',
                 'cast' => Cast::TranslatableString,
-            ]
+            ],
         ];
     }
 

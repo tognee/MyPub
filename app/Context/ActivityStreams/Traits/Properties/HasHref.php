@@ -9,14 +9,14 @@ use App\ActivityPub\Cast;
  */
 trait HasHref
 {
-    protected function hrefSchema(): array
+    protected function schemaHasHref(): array
     {
         return [
             'href' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#href',
                 'cast' => Cast::String,
-                'range' => ['xsd:anyURI']
-            ]
+                'range' => ['xsd:anyURI'],
+            ],
         ];
     }
 

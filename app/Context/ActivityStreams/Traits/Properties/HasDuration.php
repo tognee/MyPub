@@ -9,14 +9,14 @@ use App\ActivityPub\Cast;
  */
 trait HasDuration
 {
-    protected function durationSchema(): array
+    protected function schemaHasDuration(): array
     {
         return [
             'duration' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#duration',
                 'cast' => Cast::String,
-                'range' => ['xsd:duration']
-            ]
+                'range' => ['xsd:duration'],
+            ],
         ];
     }
 

@@ -12,14 +12,14 @@ use App\Context\ActivityStreams\Link;
  */
 trait HasResult
 {
-    protected function resultSchema(): array
+    protected function schemaHasResult(): array
     {
         return [
             'result' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#result',
                 'cast' => Cast::Node,
-                'range' => [BaseObject::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [BaseObject::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 

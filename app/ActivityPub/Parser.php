@@ -2,9 +2,9 @@
 
 namespace App\ActivityPub;
 
-use ML\JsonLD\JsonLD;
-use App\ActivityPub\JsonLD\Graph;
 use App\ActivityPub\JsonLD\DocumentLoader;
+use App\ActivityPub\JsonLD\Graph;
+use ML\JsonLD\JsonLD;
 
 class Parser
 {

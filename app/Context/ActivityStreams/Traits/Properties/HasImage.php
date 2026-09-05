@@ -13,14 +13,14 @@ use Illuminate\Support\Collection;
  */
 trait HasImage
 {
-    protected function imageSchema(): array
+    protected function schemaHasImage(): array
     {
         return [
             'image' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#image',
                 'cast' => Cast::Collection,
-                'range' => [Image::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [Image::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 
@@ -44,8 +44,8 @@ trait HasImage
                        $item instanceof Link ||
                        $item instanceof RemoteNode;
 
-            if (!$isValid) {
-                throw new \InvalidArgumentException("Image items must be an Image, Link, or an URI.");
+            if (! $isValid) {
+                throw new \InvalidArgumentException('Image items must be an Image, Link, or an URI.');
             }
         });
 

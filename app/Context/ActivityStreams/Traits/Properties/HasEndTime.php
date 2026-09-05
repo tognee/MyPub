@@ -10,13 +10,13 @@ use Illuminate\Support\Carbon;
  */
 trait HasEndTime
 {
-    protected function endTimeSchema(): array
+    protected function schemaHasEndTime(): array
     {
         return [
             'endTime' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#endTime',
                 'cast' => Cast::Date,
-            ]
+            ],
         ];
     }
 

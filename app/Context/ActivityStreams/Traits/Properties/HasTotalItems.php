@@ -9,13 +9,13 @@ use App\ActivityPub\Cast;
  */
 trait HasTotalItems
 {
-    protected function totalItemsSchema(): array
+    protected function schemaHasTotalItems(): array
     {
         return [
             'totalItems' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#totalItems',
                 'cast' => Cast::Int,
-            ]
+            ],
         ];
     }
 
@@ -30,7 +30,7 @@ trait HasTotalItems
     public function withTotalItems(int $totalItems): self
     {
         if ($totalItems < 0) {
-            throw new \InvalidArgumentException("TotalItems must be a non-negative integer");
+            throw new \InvalidArgumentException('TotalItems must be a non-negative integer');
         }
 
         return $this->set('https://www.w3.org/ns/activitystreams#totalItems', $totalItems);

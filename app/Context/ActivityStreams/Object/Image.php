@@ -2,8 +2,9 @@
 
 namespace App\Context\ActivityStreams\Object;
 
-use App\Context\ActivityStreams\BaseObject;
-
-class Image extends BaseObject
+class Image extends Document
 {
+    /**
+     * An image document of any kind.
+     */
 }

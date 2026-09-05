@@ -9,13 +9,13 @@ use App\ActivityPub\Cast;
  */
 trait HasAccuracy
 {
-    protected function accuracySchema(): array
+    protected function schemaHasAccuracy(): array
     {
         return [
             'accuracy' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#accuracy',
                 'cast' => Cast::Float,
-            ]
+            ],
         ];
     }
 
@@ -31,7 +31,7 @@ trait HasAccuracy
         $floatValue = (float) $value;
 
         if ($floatValue < 0 || $floatValue > 100) {
-            throw new \InvalidArgumentException("Accuracy must be between 0 and 100");
+            throw new \InvalidArgumentException('Accuracy must be between 0 and 100');
         }
 
         return $this->set('https://www.w3.org/ns/activitystreams#accuracy', $floatValue);

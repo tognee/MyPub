@@ -4,22 +4,22 @@ namespace App\Context\ActivityStreams\Traits\Properties;
 
 use App\ActivityPub\Cast;
 use App\ActivityPub\RemoteNode;
-use App\Context\ActivityStreams\Link;
 use App\Context\ActivityStreams\BaseObject;
+use App\Context\ActivityStreams\Link;
 
 /**
  * @property-read BaseObject|Link|RemoteNode $generator
  */
 trait HasGenerator
 {
-    protected function generatorSchema(): array
+    protected function schemaHasGenerator(): array
     {
         return [
             'generator' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#generator',
                 'cast' => Cast::Node,
-                'range' => [BaseObject::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [BaseObject::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 

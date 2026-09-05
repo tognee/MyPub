@@ -2,13 +2,11 @@
 
 namespace App\ActivityPub\JsonLD;
 
-use Illuminate\Support\Facades\Log;
 use ML\JsonLD\DocumentLoaderInterface;
 use ML\JsonLD\RemoteDocument;
 
 class DocumentLoader implements DocumentLoaderInterface
 {
-
     public function loadDocument($url)
     {
         $localMap = config('jsonld.contextMap');
@@ -16,8 +14,8 @@ class DocumentLoader implements DocumentLoaderInterface
         if (isset($localMap[$url])) {
             $file_path = $localMap[$url];
 
-            if (!file_exists($file_path)) {
-                throw new \Exception('Local JSON-LD context file not found: ' . $file_path);
+            if (! file_exists($file_path)) {
+                throw new \Exception('Local JSON-LD context file not found: '.$file_path);
             }
 
             return new RemoteDocument(
@@ -29,5 +27,4 @@ class DocumentLoader implements DocumentLoaderInterface
 
         throw new \RuntimeException("Remote JSON-LD context blocked: $url. Please cache this file locally.");
     }
-
 }

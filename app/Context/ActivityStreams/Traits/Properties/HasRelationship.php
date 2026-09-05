@@ -11,14 +11,14 @@ use App\Context\ActivityStreams\BaseObject;
  */
 trait HasRelationship
 {
-    protected function relationshipSchema(): array
+    protected function schemaHasRelationship(): array
     {
         return [
             'relationship' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#relationship',
                 'cast' => Cast::Node,
-                'range' => [BaseObject::class, RemoteNode::class]
-            ]
+                'range' => [BaseObject::class, RemoteNode::class],
+            ],
         ];
     }
 

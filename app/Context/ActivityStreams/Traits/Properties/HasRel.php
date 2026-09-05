@@ -10,14 +10,14 @@ use Illuminate\Support\Collection;
  */
 trait HasRel
 {
-    protected function relSchema(): array
+    protected function schemaHasRel(): array
     {
         return [
             'rel' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#rel',
                 'cast' => Cast::Collection,
-                'range' => ['string']
-            ]
+                'range' => ['string'],
+            ],
         ];
     }
 
@@ -33,8 +33,8 @@ trait HasRel
         $collection = collect(is_iterable($value) ? $value : [$value]);
 
         $collection->each(function ($item) {
-            if (!is_string($item)) {
-                throw new \InvalidArgumentException("Rel items must be strings");
+            if (! is_string($item)) {
+                throw new \InvalidArgumentException('Rel items must be strings');
             }
         });
 

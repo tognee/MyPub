@@ -6,4 +6,7 @@ use App\Context\ActivityStreams\BaseObject;
 
 class Person extends BaseObject
 {
+    /**
+     * Represents an individual person.
+     */
 }

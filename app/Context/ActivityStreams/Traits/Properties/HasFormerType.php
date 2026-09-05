@@ -9,13 +9,13 @@ use App\ActivityPub\Cast;
  */
 trait HasFormerType
 {
-    protected function formerTypeSchema(): array
+    protected function schemaHasFormerType(): array
     {
         return [
             'formerType' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#formerType',
                 'cast' => Cast::String,
-            ]
+            ],
         ];
     }
 

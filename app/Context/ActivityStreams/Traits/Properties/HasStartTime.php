@@ -10,13 +10,13 @@ use Illuminate\Support\Carbon;
  */
 trait HasStartTime
 {
-    protected function startTimeSchema(): array
+    protected function schemaHasStartTime(): array
     {
         return [
             'startTime' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#startTime',
                 'cast' => Cast::Date,
-            ]
+            ],
         ];
     }
 

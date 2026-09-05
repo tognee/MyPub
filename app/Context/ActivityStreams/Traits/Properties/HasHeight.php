@@ -9,13 +9,13 @@ use App\ActivityPub\Cast;
  */
 trait HasHeight
 {
-    protected function heightSchema(): array
+    protected function schemaHasHeight(): array
     {
         return [
             'height' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#height',
                 'cast' => Cast::Int,
-            ]
+            ],
         ];
     }
 
@@ -29,7 +29,7 @@ trait HasHeight
     public function withHeight(int $height): self
     {
         if ($height < 0) {
-            throw new \InvalidArgumentException("Height must be a non-negative integer");
+            throw new \InvalidArgumentException('Height must be a non-negative integer');
         }
 
         return $this->set('https://www.w3.org/ns/activitystreams#height', $height);

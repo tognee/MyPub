@@ -4,23 +4,23 @@ namespace App\Context\ActivityStreams\Traits\Properties;
 
 use App\ActivityPub\Cast;
 use App\ActivityPub\RemoteNode;
-use Illuminate\Support\Collection;
 use App\Context\ActivityStreams\BaseObject;
 use App\Context\ActivityStreams\Link;
+use Illuminate\Support\Collection;
 
 /**
  * @property-read Collection<BaseObject|Link|RemoteNode> $bto
  */
 trait HasBto
 {
-    protected function btoSchema(): array
+    protected function schemaHasBto(): array
     {
         return [
             'bto' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#bto',
                 'cast' => Cast::Collection,
-                'range' => [BaseObject::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [BaseObject::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 
@@ -43,8 +43,8 @@ trait HasBto
                        $item instanceof Link ||
                        $item instanceof RemoteNode;
 
-            if (!$isValid) {
-                throw new \InvalidArgumentException("Bto items must be an Object, Link, or an URI.");
+            if (! $isValid) {
+                throw new \InvalidArgumentException('Bto items must be an Object, Link, or an URI.');
             }
         });
 

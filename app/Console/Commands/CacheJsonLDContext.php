@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Http\Client\Response;
 
 class CacheJsonLDContext extends Command
 {
@@ -30,35 +30,36 @@ class CacheJsonLDContext extends Command
     {
         $storagePath = resource_path('jsonld/context/');
 
-        if (!file_exists($storagePath)) {
+        if (! file_exists($storagePath)) {
             mkdir($storagePath, 0777, true);
         }
 
         $contextMap = config('jsonld.contextMap');
 
         foreach ($contextMap as $url => $path) {
-            $this->info('Downloading ' . $url . ' to ' . $path);
+            $this->info('Downloading '.$url.' to '.$path);
 
             try {
                 $response = Http::withHeaders([
-                    'Accept' => 'application/ld+json, application/json'
+                    'Accept' => 'application/ld+json, application/json',
                 ])->get($url);
 
                 // Wait for the response if it's a Promise
-                if (!$response instanceof Response) {
+                if (! $response instanceof Response) {
                     $response = $response->wait();
                 }
 
                 if ($response->failed()) {
-                    $this->error('Failed to download ' . $url . ': ' . $response->status());
+                    $this->error('Failed to download '.$url.': '.$response->status());
+
                     continue;
                 }
 
                 File::put($path, $response->body());
-                $this->info('Downloaded ' . $url . ' to ' . $path);
+                $this->info('Downloaded '.$url.' to '.$path);
 
             } catch (\Exception $e) {
-                $this->error('Failed to download ' . $url . ': ' . $e->getMessage());
+                $this->error('Failed to download '.$url.': '.$e->getMessage());
             }
         }
     }

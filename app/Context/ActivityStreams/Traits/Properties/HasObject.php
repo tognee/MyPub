@@ -4,23 +4,23 @@ namespace App\Context\ActivityStreams\Traits\Properties;
 
 use App\ActivityPub\Cast;
 use App\ActivityPub\RemoteNode;
-use Illuminate\Support\Collection;
 use App\Context\ActivityStreams\BaseObject;
 use App\Context\ActivityStreams\Link;
+use Illuminate\Support\Collection;
 
 /**
  * @property-read Collection<BaseObject|Link|RemoteNode> $object
  */
 trait HasObject
 {
-    protected function objectSchema(): array
+    protected function schemaHasObject(): array
     {
         return [
             'object' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#object',
                 'cast' => Cast::Collection,
-                'range' => [BaseObject::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [BaseObject::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 
@@ -44,8 +44,8 @@ trait HasObject
                        $item instanceof Link ||
                        $item instanceof RemoteNode;
 
-            if (!$isValid) {
-                throw new \InvalidArgumentException("Object items must be an Object, Link, or an URI.");
+            if (! $isValid) {
+                throw new \InvalidArgumentException('Object items must be an Object, Link, or an URI.');
             }
         });
 

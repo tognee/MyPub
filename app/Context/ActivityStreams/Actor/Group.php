@@ -6,4 +6,7 @@ use App\Context\ActivityStreams\BaseObject;
 
 class Group extends BaseObject
 {
+    /**
+     * Represents a formal or informal collective of Actors.
+     */
 }

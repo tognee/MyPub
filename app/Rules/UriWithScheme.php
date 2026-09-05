@@ -3,8 +3,8 @@
 namespace App\Rules;
 
 use Closure;
-use Illuminate\Support\Uri;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Support\Uri;
 
 class UriWithScheme implements ValidationRule
 {

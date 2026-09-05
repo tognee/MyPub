@@ -4,23 +4,23 @@ namespace App\Context\ActivityStreams\Traits\Properties;
 
 use App\ActivityPub\Cast;
 use App\ActivityPub\RemoteNode;
-use Illuminate\Support\Collection;
 use App\Context\ActivityStreams\BaseObject;
 use App\Context\ActivityStreams\Link;
+use Illuminate\Support\Collection;
 
 /**
  * @property-read Collection<BaseObject|Link|RemoteNode> $cc
  */
 trait HasCc
 {
-    protected function ccSchema(): array
+    protected function schemaHasCc(): array
     {
         return [
             'cc' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#cc',
                 'cast' => Cast::Collection,
-                'range' => [BaseObject::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [BaseObject::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 
@@ -43,12 +43,11 @@ trait HasCc
                        $item instanceof Link ||
                        $item instanceof RemoteNode;
 
-            if (!$isValid) {
-                throw new \InvalidArgumentException("Cc items must be an Object, Link, or an URI.");
+            if (! $isValid) {
+                throw new \InvalidArgumentException('Cc items must be an Object, Link, or an URI.');
             }
         });
 
         return $this->set('https://www.w3.org/ns/activitystreams#cc', $collection);
     }
 }
-

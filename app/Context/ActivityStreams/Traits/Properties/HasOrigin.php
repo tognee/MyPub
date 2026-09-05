@@ -12,14 +12,14 @@ use App\Context\ActivityStreams\Link;
  */
 trait HasOrigin
 {
-    protected function originSchema(): array
+    protected function schemaHasOrigin(): array
     {
         return [
             'origin' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#origin',
                 'cast' => Cast::Node,
-                'range' => [BaseObject::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [BaseObject::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 

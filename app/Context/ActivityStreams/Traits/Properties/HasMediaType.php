@@ -9,14 +9,14 @@ use App\ActivityPub\Cast;
  */
 trait HasMediaType
 {
-    protected function mediaTypeSchema(): array
+    protected function schemaHasMediaType(): array
     {
         return [
             'mediaType' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#mediaType',
                 'cast' => Cast::String,
-                'range' => ['MIME Media Type']
-            ]
+                'range' => ['MIME Media Type'],
+            ],
         ];
     }
 

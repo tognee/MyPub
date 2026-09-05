@@ -9,13 +9,13 @@ use App\ActivityPub\Cast;
  */
 trait HasLongitude
 {
-    protected function longitudeSchema(): array
+    protected function schemaHasLongitude(): array
     {
         return [
             'longitude' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#longitude',
                 'cast' => Cast::Float,
-            ]
+            ],
         ];
     }
 
@@ -31,7 +31,7 @@ trait HasLongitude
         $floatValue = is_numeric($value) ? (float) $value : (float) $value;
 
         if ($floatValue < -180 || $floatValue > 180) {
-            throw new \InvalidArgumentException("Longitude must be between -180 and 180 degrees");
+            throw new \InvalidArgumentException('Longitude must be between -180 and 180 degrees');
         }
 
         return $this->set('https://www.w3.org/ns/activitystreams#longitude', $floatValue);

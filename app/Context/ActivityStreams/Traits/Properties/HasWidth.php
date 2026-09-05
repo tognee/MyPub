@@ -9,13 +9,13 @@ use App\ActivityPub\Cast;
  */
 trait HasWidth
 {
-    protected function widthSchema(): array
+    protected function schemaHasWidth(): array
     {
         return [
             'width' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#width',
                 'cast' => Cast::Int,
-            ]
+            ],
         ];
     }
 
@@ -29,7 +29,7 @@ trait HasWidth
     public function withWidth(int $width): self
     {
         if ($width < 0) {
-            throw new \InvalidArgumentException("Width must be a non-negative integer");
+            throw new \InvalidArgumentException('Width must be a non-negative integer');
         }
 
         return $this->set('https://www.w3.org/ns/activitystreams#width', $width);

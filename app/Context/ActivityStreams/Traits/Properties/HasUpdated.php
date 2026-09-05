@@ -10,13 +10,13 @@ use Illuminate\Support\Carbon;
  */
 trait HasUpdated
 {
-    protected function updatedSchema(): array
+    protected function schemaHasUpdated(): array
     {
         return [
             'updated' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#updated',
                 'cast' => Cast::Date,
-            ]
+            ],
         ];
     }
 

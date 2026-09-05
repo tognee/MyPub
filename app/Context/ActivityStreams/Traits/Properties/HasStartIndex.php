@@ -9,13 +9,13 @@ use App\ActivityPub\Cast;
  */
 trait HasStartIndex
 {
-    protected function startIndexSchema(): array
+    protected function schemaHasStartIndex(): array
     {
         return [
             'startIndex' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#startIndex',
                 'cast' => Cast::Int,
-            ]
+            ],
         ];
     }
 
@@ -29,7 +29,7 @@ trait HasStartIndex
     public function withStartIndex(int $startIndex): self
     {
         if ($startIndex < 0) {
-            throw new \InvalidArgumentException("StartIndex must be a non-negative integer");
+            throw new \InvalidArgumentException('StartIndex must be a non-negative integer');
         }
 
         return $this->set('https://www.w3.org/ns/activitystreams#startIndex', $startIndex);

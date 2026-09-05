@@ -10,13 +10,13 @@ use Illuminate\Support\Carbon;
  */
 trait HasPublished
 {
-    protected function publishedSchema(): array
+    protected function schemaHasPublished(): array
     {
         return [
             'published' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#published',
                 'cast' => Cast::Date,
-            ]
+            ],
         ];
     }
 

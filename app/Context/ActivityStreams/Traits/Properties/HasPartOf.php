@@ -4,22 +4,22 @@ namespace App\Context\ActivityStreams\Traits\Properties;
 
 use App\ActivityPub\Cast;
 use App\ActivityPub\RemoteNode;
-use App\Context\ActivityStreams\Link;
 use App\Context\ActivityStreams\Collection;
+use App\Context\ActivityStreams\Link;
 
 /**
  * @property-read Collection|Link|RemoteNode|null $partOf
  */
 trait HasPartOf
 {
-    protected function partOfSchema(): array
+    protected function schemaHasPartOf(): array
     {
         return [
             'partOf' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#partOf',
                 'cast' => Cast::Node,
-                'range' => [Collection::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [Collection::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 

@@ -9,13 +9,13 @@ use App\ActivityPub\Cast;
  */
 trait HasRadius
 {
-    protected function radiusSchema(): array
+    protected function schemaHasRadius(): array
     {
         return [
             'radius' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#radius',
                 'cast' => Cast::Float,
-            ]
+            ],
         ];
     }
 
@@ -32,7 +32,7 @@ trait HasRadius
         $floatValue = (float) $value;
 
         if ($floatValue < 0) {
-            throw new \InvalidArgumentException("Radius must be greater than or equal to 0");
+            throw new \InvalidArgumentException('Radius must be greater than or equal to 0');
         }
 
         return $this->set('https://www.w3.org/ns/activitystreams#radius', $floatValue);

@@ -9,13 +9,13 @@ use App\ActivityPub\Cast;
  */
 trait HasAltitude
 {
-    protected function altitudeSchema(): array
+    protected function schemaHasAltitude(): array
     {
         return [
             'altitude' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#altitude',
                 'cast' => Cast::Float,
-            ]
+            ],
         ];
     }
 

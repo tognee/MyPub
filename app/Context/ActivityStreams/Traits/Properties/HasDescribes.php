@@ -11,14 +11,14 @@ use App\Context\ActivityStreams\BaseObject;
  */
 trait HasDescribes
 {
-    protected function describesSchema(): array
+    protected function schemaHasDescribes(): array
     {
         return [
             'describes' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#describes',
                 'cast' => Cast::Node,
-                'range' => [BaseObject::class, RemoteNode::class]
-            ]
+                'range' => [BaseObject::class, RemoteNode::class],
+            ],
         ];
     }
 

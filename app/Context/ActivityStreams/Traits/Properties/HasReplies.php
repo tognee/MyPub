@@ -11,14 +11,14 @@ use App\Context\ActivityStreams\Collection;
  */
 trait HasReplies
 {
-    protected function repliesSchema(): array
+    protected function schemaHasReplies(): array
     {
         return [
             'replies' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#replies',
                 'cast' => Cast::Node,
-                'range' => [Collection::class, RemoteNode::class]
-            ]
+                'range' => [Collection::class, RemoteNode::class],
+            ],
         ];
     }
 

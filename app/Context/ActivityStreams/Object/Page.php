@@ -2,8 +2,9 @@
 
 namespace App\Context\ActivityStreams\Object;
 
-use App\Context\ActivityStreams\BaseObject;
-
-class Page extends BaseObject
+class Page extends Document
 {
+    /**
+     * Represents a Web Page.
+     */
 }

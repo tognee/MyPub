@@ -4,23 +4,23 @@ namespace App\Context\ActivityStreams\Traits\Properties;
 
 use App\ActivityPub\Cast;
 use App\ActivityPub\RemoteNode;
-use Illuminate\Support\Collection;
 use App\Context\ActivityStreams\BaseObject;
 use App\Context\ActivityStreams\Link;
+use Illuminate\Support\Collection;
 
 /**
  * @property-read Collection<BaseObject|Link|RemoteNode> $attributedTo
  */
 trait HasAttributedTo
 {
-    protected function attributedToSchema(): array
+    protected function schemaHasAttributedTo(): array
     {
         return [
             'attributedTo' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#attributedTo',
                 'cast' => Cast::Collection,
-                'range' => [BaseObject::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [BaseObject::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 
@@ -45,8 +45,8 @@ trait HasAttributedTo
                        $item instanceof Link ||
                        $item instanceof RemoteNode;
 
-            if (!$isValid) {
-                throw new \InvalidArgumentException("AttributedTo items must be an Object, Link, or an URI.");
+            if (! $isValid) {
+                throw new \InvalidArgumentException('AttributedTo items must be an Object, Link, or an URI.');
             }
         });
 

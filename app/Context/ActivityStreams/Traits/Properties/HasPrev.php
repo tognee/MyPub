@@ -12,14 +12,14 @@ use App\Context\ActivityStreams\Link;
  */
 trait HasPrev
 {
-    protected function prevSchema(): array
+    protected function schemaHasPrev(): array
     {
         return [
             'prev' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#prev',
                 'cast' => Cast::Node,
-                'range' => [CollectionPage::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [CollectionPage::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 

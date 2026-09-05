@@ -10,13 +10,13 @@ use App\ActivityPub\TranslatableString;
  */
 trait HasContent
 {
-    protected function contentSchema(): array
+    protected function schemaHasContent(): array
     {
         return [
             'content' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#content',
                 'cast' => Cast::TranslatableString,
-            ]
+            ],
         ];
     }
 

@@ -4,23 +4,23 @@ namespace App\Context\ActivityStreams\Traits\Properties;
 
 use App\ActivityPub\Cast;
 use App\ActivityPub\RemoteNode;
-use Illuminate\Support\Collection;
 use App\Context\ActivityStreams\Link;
 use App\Context\ActivityStreams\Object\Image;
+use Illuminate\Support\Collection;
 
 /**
  * @property-read Collection<Image|Link|RemoteNode> $icon
  */
 trait HasIcon
 {
-    protected function iconSchema(): array
+    protected function schemaHasIcon(): array
     {
         return [
             'icon' => [
                 'uri' => 'https://www.w3.org/ns/activitystreams#icon',
                 'cast' => Cast::Collection,
-                'range' => [Image::class, Link::class, RemoteNode::class]
-            ]
+                'range' => [Image::class, Link::class, RemoteNode::class],
+            ],
         ];
     }
 
@@ -45,8 +45,8 @@ trait HasIcon
                        $item instanceof Link ||
                        $item instanceof RemoteNode;
 
-            if (!$isValid) {
-                throw new \InvalidArgumentException("Icon items must be an Image, Link, or an URI.");
+            if (! $isValid) {
+                throw new \InvalidArgumentException('Icon items must be an Image, Link, or an URI.');
             }
         });
 
